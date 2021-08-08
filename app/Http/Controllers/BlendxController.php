@@ -22,7 +22,7 @@ class BlendxController extends Controller
 
             return response()->json($res, 200);
         }else{
-           return  view('admin.'.strtolower($model->name).'.index',compact('all'));
+           return  view('admin.'.$route.'.index',compact('all'));
         }
 
     }
@@ -33,7 +33,7 @@ class BlendxController extends Controller
         }
 
         $model = BlendxHelpers::route_to_model($route);
-        return  view('admin.'.strtolower($model->name).'.create',compact('model') );
+        return  view('admin.'.$route.'.create',compact('model') );
 
 
     }
@@ -46,7 +46,7 @@ class BlendxController extends Controller
         $entry = $model->path::with($model->blender->getRelations())->where('id', $id)->first();
         $entry_to_respond = $model->blender::format_entry($entry, $model);
         $res = BlendxHelpers::generate_response(false, $model->name.' with id ('.$id.')loaded!', [$entry_to_respond]);
-        return  view('admin.'.strtolower($model->name).'.edit' ,compact('entry_to_respond'));
+        return  view('admin.'.$route.'.edit' ,compact('entry_to_respond'));
 
     }
 
@@ -106,7 +106,7 @@ class BlendxController extends Controller
                 $res = BlendxHelpers ::generate_response(false, 'Successfully created!', [$model -> blender ::format_entry($entry, $model)]);
                 return response() -> json($res, 201);
             }else{
-                return  redirect('admin/'.strtolower($model->name).'/index');
+                return  redirect('admin/'.$route.'/index');
             }
         }catch (\Exception $error){
             $res = BlendxHelpers::generate_response(true, 'Could not create!', [$error->getMessage()]);
@@ -136,7 +136,7 @@ class BlendxController extends Controller
                 return response()->json($res, 201);
             }else{
 
-                return  redirect('admin/'.strtolower($model->name).'/index');
+                return  redirect('admin/'.$route.'/index');
             }
 
         }catch (\Exception $error){

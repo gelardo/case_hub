@@ -28,8 +28,7 @@
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"/>
     <link href={{asset("assets/css/paper-dashboard.css")}} rel="stylesheet"/>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 <body class="{{(\Request::is('login')) ? "login-" : ""}}">
 <div class="wrapper ">
