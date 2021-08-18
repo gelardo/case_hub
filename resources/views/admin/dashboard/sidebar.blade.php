@@ -5,7 +5,7 @@
     <div class="logo">
         <a href="{{url('/')}}" class="simple-text logo-mini">
             <div class="logo-image-small">
-                <img src="../assets/img/logo-small.png">
+                <img src="{{asset('assets/img/logo-small.png')}}">
             </div>
             <!-- <p>CT</p> -->
         </a>
@@ -55,19 +55,19 @@
 {{--        </div>--}}
         <ul class="nav">
             <li class="active">
-                <a href="../examples/dashboard.html">
+                <a href="{{url('admin/dashboard')}}">
                     <i class="nc-icon nc-bank"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li>
-                <a data-toggle="collapse" href="#pagesExamples">
+                <a data-toggle="collapse" href="#pagesExamples1">
                     <i class="nc-icon nc-book-bookmark"></i>
                     <p>
-                        Users <b class="caret"></b>
+                       Website Users <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse " id="pagesExamples">
+                <div class="collapse " id="pagesExamples1">
                     <ul class="nav">
                         <li>
                             <a href="{{url('admin/user/index')}}">
@@ -75,18 +75,99 @@
                                 <span class="sidebar-normal"> List Users </span>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="{{url('admin/lawyer/index')}}">
+                                <span class="sidebar-mini-icon">L</span>
+                                <span class="sidebar-normal"> Lawyer </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
             <li>
-                <a data-toggle="collapse" href="#componentsExamples">
-                    <i class="nc-icon nc-layout-11"></i>
+                <a data-toggle="collapse" href="#pagesExamples2">
+                    <i class="nc-icon nc-book-bookmark"></i>
                     <p>
-                        Settings <b class="caret"></b>
+                       DCMC Meetings <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse " id="componentsExamples">
+                <div class="collapse " id="pagesExamples2">
                     <ul class="nav">
+
+                        <li>
+                            <a href="{{url('admin/dcmc_meeting/index')}}">
+                                <span class="sidebar-mini-icon">DM</span>
+                                <span class="sidebar-normal"> DCMC Meeting </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#pagesExamples3">
+                    <i class="nc-icon nc-book-bookmark"></i>
+                    <p>
+                       Cases <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse " id="pagesExamples3">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{url('admin/case_main/index')}}">
+                                <span class="sidebar-mini-icon">C</span>
+                                <span class="sidebar-normal"> Cases List </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/case_issues_log/index')}}">
+                                <span class="sidebar-mini-icon">CI</span>
+                                <span class="sidebar-normal"> Case Issue </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/case_proceeding/index')}}">
+                                <span class="sidebar-mini-icon">CP</span>
+                                <span class="sidebar-normal"> Case Proceedings </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#pagesExamples4">
+                    <i class="nc-icon nc-book-bookmark"></i>
+                    <p>
+                       Billing <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse " id="pagesExamples4">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{url('admin/billing/index')}}">
+                                <span class="sidebar-mini-icon">B</span>
+                                <span class="sidebar-normal"> Billing </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#componentsExamples5">
+                    <i class="nc-icon nc-layout-11"></i>
+                    <p>
+                       Base Settings <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse " id="componentsExamples5">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{url('admin/case_type/index')}}">
+                                <span class="sidebar-mini-icon">CT</span>
+                                <span class="sidebar-normal"> Case Type </span>
+                            </a>
+                        </li>
+
                         <li>
                             <a href="{{url('admin/case_category/index')}}">
                                 <span class="sidebar-mini-icon">CC</span>
@@ -100,27 +181,21 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{url('admin/program/index')}}">
-                                <span class="sidebar-mini-icon">P</span>
-                                <span class="sidebar-normal"> Program </span>
-                            </a>
-                        </li>
-                        <li>
                             <a href="{{url('admin/district/index')}}">
                                 <span class="sidebar-mini-icon">D</span>
                                 <span class="sidebar-normal"> District </span>
                             </a>
                         </li>
                         <li>
+                        <a href="{{url('admin/police_station/index')}}">
+                            <span class="sidebar-mini-icon">PS</span>
+                            <span class="sidebar-normal"> Police Station </span>
+                        </a>
+                        </li>
+                        <li>
                             <a href="{{url('admin/court/index')}}">
                                 <span class="sidebar-mini-icon">C</span>
                                 <span class="sidebar-normal"> Court </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('admin/case_status/index')}}">
-                                <span class="sidebar-mini-icon">CS</span>
-                                <span class="sidebar-normal"> Case Status </span>
                             </a>
                         </li>
                         <li>
@@ -135,123 +210,40 @@
                                 <span class="sidebar-normal"> Additional Court Order </span>
                             </a>
                         </li>
+{{--                        <li>--}}
+{{--                            <a href="{{url('admin/program/index')}}">--}}
+{{--                                <span class="sidebar-mini-icon">P</span>--}}
+{{--                                <span class="sidebar-normal"> Program </span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+
+
+                        <li>
+                            <a href="{{url('admin/case_activity_status/index')}}">
+                                <span class="sidebar-mini-icon">CAS</span>
+                                <span class="sidebar-normal"> Case Activity Status </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{url('admin/region/index')}}">
+                                <span class="sidebar-mini-icon">R</span>
+                                <span class="sidebar-normal"> Region </span>
+                            </a>
+                        </li>
+                        <li>
+
+                        <li>
+                            <a href="{{url('admin/bill_type/index')}}">
+                                <span class="sidebar-mini-icon">BT</span>
+                                <span class="sidebar-normal"> Bill Type </span>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </li>
-            <li>
-                <a data-toggle="collapse" href="#formsExamples">
-                    <i class="nc-icon nc-ruler-pencil"></i>
-                    <p>
-                        Forms <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse " id="formsExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="../examples/forms/regular.html">
-                                <span class="sidebar-mini-icon">RF</span>
-                                <span class="sidebar-normal"> Regular Forms </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/forms/extended.html">
-                                <span class="sidebar-mini-icon">EF</span>
-                                <span class="sidebar-normal"> Extended Forms </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/forms/validation.html">
-                                <span class="sidebar-mini-icon">V</span>
-                                <span class="sidebar-normal"> Validation Forms </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/forms/wizard.html">
-                                <span class="sidebar-mini-icon">W</span>
-                                <span class="sidebar-normal"> Wizard </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a data-toggle="collapse" href="#tablesExamples">
-                    <i class="nc-icon nc-single-copy-04"></i>
-                    <p>
-                        Tables <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse " id="tablesExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="../examples/tables/regular.html">
-                                <span class="sidebar-mini-icon">RT</span>
-                                <span class="sidebar-normal"> Regular Tables </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/tables/extended.html">
-                                <span class="sidebar-mini-icon">ET</span>
-                                <span class="sidebar-normal"> Extended Tables </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/tables/datatables.net.html">
-                                <span class="sidebar-mini-icon">DT</span>
-                                <span class="sidebar-normal"> DataTables.net </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a data-toggle="collapse" href="#mapsExamples">
-                    <i class="nc-icon nc-pin-3"></i>
-                    <p>
-                        Maps <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse " id="mapsExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="../examples/maps/google.html">
-                                <span class="sidebar-mini-icon">GM</span>
-                                <span class="sidebar-normal"> Google Maps </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/maps/fullscreen.html">
-                                <span class="sidebar-mini-icon">FSM</span>
-                                <span class="sidebar-normal"> Full Screen Map </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../examples/maps/vector.html">
-                                <span class="sidebar-mini-icon">VM</span>
-                                <span class="sidebar-normal"> Vector Map </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="../examples/widgets.html">
-                    <i class="nc-icon nc-box"></i>
-                    <p>Widgets</p>
-                </a>
-            </li>
-            <li>
-                <a href="../examples/charts.html">
-                    <i class="nc-icon nc-chart-bar-32"></i>
-                    <p>Charts</p>
-                </a>
-            </li>
-            <li>
-                <a href="../examples/calendar.html">
-                    <i class="nc-icon nc-calendar-60"></i>
-                    <p>Calendar</p>
-                </a>
-            </li>
+
         </ul>
     </div>
 </div>

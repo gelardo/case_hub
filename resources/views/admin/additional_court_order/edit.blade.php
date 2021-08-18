@@ -23,7 +23,7 @@
                                 Court Orders
                                 *
                             </label> <br>
-                            <select class="selectpicker" id="court_order_id"  class="form-control" required name="court_order_id"   multiple title="Select Court Order" data-size="7">
+                            <select class="selectpicker" id="court_order_id"  class="form-control" required name="court_order_id"   title="Select Court Order" data-size="7">
                                 <option disabled> Select Court Orders</option>
 
                             </select>

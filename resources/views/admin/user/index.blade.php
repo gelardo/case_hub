@@ -16,17 +16,19 @@
                     <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
+                            <th>User Info</th>
+                            <th>District</th>
+                            <th>Registration Date</th>
+                            <th>Status</th>
                             <th class="disabled-sorting text-right">Actions</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Age</th>
+                            <th>User Info</th>
+                            <th>District</th>
+                            <th>Registration Date</th>
+                            <th>Status</th>
                             <th class="disabled-sorting text-right">Actions</th>
                         </tr>
                         </tfoot>
@@ -37,9 +39,15 @@
                          @foreach($all as $r)
                         <tr>
 
-                            <td>{{$r->name}}</td>
-                            <td>{{$r->phone}}</td>
-                            <td>{{$r->email}}</td>
+                            <td>
+                                {{$r->username}}<br>
+                                {{$r->first_name}}&nbsp;{{$r->last_name}}<br>
+                                <a href="tel:{{$r->phone}}">{{$r->phone}}</a><br>
+                                <a href="mailto:{{$r->email}}">{{$r->email}}</a>
+                            </td>
+                            <td>{{$r->districts->name}}</td>
+                            <td>{{$r->registration_date}}</td>
+                            <td>{{$r->status}}</td>
                             <td class="text-right">
                                 <a href="{{url('admin/user/edit',$r->id)}}" class="btn btn-warning btn-link btn-icon btn-sm "><i class="fa fa-edit"></i></a>
                                 <form action="{{url('admin/user/delete/'.$r->id)}}" method="post">

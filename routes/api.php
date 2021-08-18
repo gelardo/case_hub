@@ -20,6 +20,7 @@ Route::get('/{route}/show/{id?}', [BlendxController::class, 'show']);
 Route::get('/{route}/edit/{id?}', [BlendxController::class, 'edit']);
 Route::delete('/{route}/delete/{id?}/', [BlendxController::class, 'delete']);
 Route::post('/{route}/store', [BlendxController::class, 'store']);
+Route::get('/{route}/query', [BlendxController::class, 'query']);
 Route::put('/{route}/update/{id?}', [BlendxController::class, 'update']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

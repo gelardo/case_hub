@@ -90,6 +90,27 @@
             $(this).addClass('active');
         });
     });
+    $(document).ready(function () {
+        $('#datatable').DataTable({
+            stateSave: true,
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Search records",
+            }
+
+        });
+
+    });
 </script>
+@stack('case-main-push')
+@stack('dcmc-push')
+@stack('case-nature-push')
+@stack('case-proceeding-push')
 </body>
 </html>

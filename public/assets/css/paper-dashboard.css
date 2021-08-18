@@ -16759,3 +16759,7 @@ img {
 }
 
 /*# sourceMappingURL=dashboard-pro.css.map */
+.has-label label {
+    color: #000000;
+    font-size: 1rem;
+}

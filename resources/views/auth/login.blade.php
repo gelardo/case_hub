@@ -9,7 +9,9 @@
               <div class="card card-login">
                 <div class="card-header ">
                   <div class="card-header ">
-                    <h3 class="header text-center">{{ __('Login') }}</h3>
+                    <h3 class="header text-center">
+                        <small>Case Hub User</small> <br>
+                        {{ __('Login') }}</h3>
                   </div>
                 </div>
                 <div class="card-body ">
@@ -57,12 +59,13 @@
                     <button type="submit" class="btn btn-warning btn-round btn-block mb-3">
                         {{ __('Login') }}
                     </button>
-
-
-                        <a class="btn btn-link" href="{{ route('admin.login') }}">
-                            {{ __('Admin Login') }}
-                        </a>
                 </div>
+                  <a class="btn btn-link" href="{{ route('admin.login') }}">
+                      {{ __('Admin Login') }}
+                  </a>
+                  <a class="btn btn-link" href="{{ route('lawyer.login') }}">
+                      {{ __('Lawyer Login') }}
+                  </a>
               </div>
             </form>
           </div>

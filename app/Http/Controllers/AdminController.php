@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -42,6 +43,7 @@ class AdminController extends Controller
     }
 
     public function logout(){
+        Session::flush();
         Auth::guard('admin')->logout();
         return redirect('/admin/login');
     }

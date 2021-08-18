@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admin',
@@ -47,6 +51,11 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+            'hash' => false,
+        ],
+        'lawyer' => [
+            'driver' => 'session',
+            'provider' => 'lawyer',
             'hash' => false,
         ],
     ],
@@ -76,6 +85,10 @@ return [
         'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'lawyer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Lawyer::class,
         ],
 
         // 'users' => [

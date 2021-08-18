@@ -9,7 +9,7 @@ class AdditionalCourtOrder extends Blender{
     {
         return parent::store_validator($route);
     }
-    public static function update_validator()
+    public static function update_validator($route)
     {
         return [
             'name'=>'required|string',

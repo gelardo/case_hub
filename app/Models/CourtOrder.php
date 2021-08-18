@@ -13,4 +13,7 @@ class CourtOrder extends Model
     public function additional_court_orders(){
         return $this->hasMany(AdditionalCourtOrder::class);
     }
+    public function case_mains(){
+        return $this->hasMany(CaseMain::class);
+    }
 }

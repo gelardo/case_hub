@@ -14,12 +14,20 @@ class Blender {
         foreach ($table as $column){
             if($column->getName() == 'id' || $column->getName() == 'slug' || Str::contains($column->getName(), '_token') || Str::contains($column->getName(), '_at')){continue;}
             $validator[$column->getName()] = BlendxHelpers::column_to_validator_line($column);
+
         }
         return $validator;
     }
 
-    public static function update_validator(){
-        return [];
+    public static function update_validator($route){
+        $table = Schema::getConnection()->getDoctrineSchemaManager()->listTableColumns(Str::plural($route));
+        $validator = [];
+        foreach ($table as $column){
+            if($column->getName() == 'id' || $column->getName() == 'slug' || Str::contains($column->getName(), '_token') || Str::contains($column->getName(), '_at')){continue;}
+            $validator[$column->getName()] = BlendxHelpers::column_to_validator_line($column);
+        }
+
+        return $validator;
     }
     public static function after_validator($validated, $route, $user = null){
 
@@ -33,17 +41,17 @@ class Blender {
 
         }
         $updated = $validated;
-
         foreach ($validated as $key => $input){
             if(gettype($input) == 'object'){
                 $originalFileName = $input->getClientOriginalName();
                 $fileExt = $input->getClientOriginalExtension();
                 $originalFileNameWithoutExt = Str::of($originalFileName)->basename('.'.$fileExt);
                 $fileNameToSave = $originalFileNameWithoutExt . '_' . time() . '.' . $fileExt;
-                $updated[$key] = 'storage/'.Str::snake($model->name).'/'.$fileNameToSave;
+                $validated[$key] = 'storage/'.Str::snake($model->name).'/'.$fileNameToSave;
                 $input->storeAs('public/'.Str::snake($model->name), $fileNameToSave);
             }
         }
+
         $create_with = $model->blender->getCreateWith();
         $toReturn = [];
         foreach ($create_with as $input => $relation_route){

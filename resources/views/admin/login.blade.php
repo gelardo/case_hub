@@ -1,4 +1,4 @@
-@extends('admin.layouts.layout')
+@extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="col-lg-4 col-md-6 ml-auto mr-auto">
@@ -36,6 +36,12 @@
                 <div class="card-footer ">
                     <button type="submit" class="btn btn-warning btn-round btn-block mb-3">Login</button>
                 </div>
+                <a class="btn btn-link" href="{{ route('user.login') }}">
+                    {{ __('User Login') }}
+                </a>
+                <a class="btn btn-link" href="{{ route('lawyer.login') }}">
+                    {{ __('Lawyer Login') }}
+                </a>
             </div>
         </form>
 

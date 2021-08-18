@@ -18,7 +18,8 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
 
-        if(!Auth::guard('admin')->check()){
+        if(!Auth::guard('admin')->check() && !Auth::guard('admin')->check()){
+//            dd(Auth::guard('admin')->check());
             return redirect('/admin/login');
         }
 

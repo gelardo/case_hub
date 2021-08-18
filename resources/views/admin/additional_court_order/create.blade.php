@@ -9,14 +9,14 @@
                 <div class="card ">
                     @include('admin.layouts.message')
                     <div class="card-header ">
-                        <h4 class="card-title">Add New Additional Court Order Category</h4>
+                        <h4 class="card-title">Add New Additional Court Order </h4>
                     </div>
                     <div class="card-body ">
                         <div class="form-group has-label">
                             <label>
                                 Name
                             </label>
-                            <input class="form-control" name="name" placeholder="Enter Case Category Name" type="text" required="true" />
+                            <input class="form-control" name="name" placeholder="Enter Additional Court Order Name" type="text" required="true" />
                         </div>
                         <div class="form-group has-label">
                             <label>

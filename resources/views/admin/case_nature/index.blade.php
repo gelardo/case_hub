@@ -53,4 +53,5 @@
             </div><!--  end card  -->
         </div> <!-- end col-md-12 -->
     </div>
+
 @endsection

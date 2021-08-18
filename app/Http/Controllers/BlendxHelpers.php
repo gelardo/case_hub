@@ -56,7 +56,6 @@ class BlendxHelpers extends Controller
         $isRequired = $column->getNotNull() ? "|required" : "";
         $name = $column->getName();
         $validator_string = "";
-
         if(Str::contains($name, '_id')){
             $route = Str::substr($name, 0, -3);
             $table_name = Str::plural($route);

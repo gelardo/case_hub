@@ -13,5 +13,8 @@ class AdditionalCourtOrder extends Model
     public function court_orders(){
         return $this->belongsTo(CourtOrder::class, 'court_order_id','id');
     }
+    public function case_mains(){
+        return $this->hasMany(CaseMain::class);
+    }
 
 }
