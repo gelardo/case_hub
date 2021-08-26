@@ -6,7 +6,7 @@
             <div class="card">
                 @include('admin.layouts.message')
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">Program List</h4>
+                    <h4 class="card-title">District List</h4>
                     <a href="{{url('admin/district/create')}}" class="btn btn-instagram float-right">Add New</a>
                 </div>
                 <div class="card-body">

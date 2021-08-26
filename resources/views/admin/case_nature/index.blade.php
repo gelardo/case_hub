@@ -6,7 +6,7 @@
             <div class="card">
                 @include('admin.layouts.message')
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">Case Category List</h4>
+                    <h4 class="card-title">Case Nature List</h4>
                     <a href="{{url('admin/case_nature/create')}}" class="btn btn-instagram float-right">Add New</a>
                 </div>
                 <div class="card-body">
@@ -36,7 +36,7 @@
                             <td>{{$r->name}}</td>
                             <td class="text-right">
                                 <a href="{{url('admin/case_nature/edit',$r->id)}}" class="btn btn-warning btn-link btn-icon btn-sm "><i class="fa fa-edit"></i></a>
-                                <form action="{{url('admin/court/delete/'.$r->id)}}" method="post">
+                                <form action="{{url('admin/case_nature/delete/'.$r->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-link btn-icon btn-sm">

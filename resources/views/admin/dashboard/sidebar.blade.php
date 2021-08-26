@@ -219,6 +219,13 @@
 
 
                         <li>
+                            <a href="{{url('admin/case_status/index')}}">
+                                <span class="sidebar-mini-icon">CS</span>
+                                <span class="sidebar-normal"> Case Status </span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{url('admin/case_activity_status/index')}}">
                                 <span class="sidebar-mini-icon">CAS</span>
                                 <span class="sidebar-normal"> Case Activity Status </span>
