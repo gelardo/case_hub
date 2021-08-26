@@ -10,7 +10,7 @@
                 <div class="card ">
                     @include('admin.layouts.message')
                     <div class="card-header ">
-                        <h4 class="card-title">Update Users Information</h4>
+                        <h4 class="card-title">Update Bill Information</h4>
                     </div>
                     <div class="card-body ">
                         <div class="row col-md-12">
@@ -20,7 +20,7 @@
                                         Bill Type
                                         *
                                     </label> <br>
-                                    <select class="selectpicker" id="bill_type_id"  class="form-control" required name="bill_type_id"   title="Select Case Type" data-size="7">
+                                    <select id="bill_type_id"  class="form-control" required name="bill_type_id"   title="Select Case Type" data-size="7">
                                         <option disabled> Select Bill Type</option>
 
                                     </select>
@@ -31,7 +31,7 @@
                                         Case Type
                                         *
                                     </label> <br>
-                                    <select class="selectpicker" id="case_type_id"  class="form-control" required name="case_type_id"   title="Select Case Type" data-size="7">
+                                    <select  id="case_type_id"  class="form-control" required name="case_type_id"   title="Select Case Type" data-size="7">
                                         <option disabled> Select Case Type</option>
 
                                     </select>
@@ -42,8 +42,7 @@
                                         District
                                         *
                                     </label> <br>
-                                    <select class="form-control selectpicker" id="district_id"
-                                            onchange="loadCases(this.value)" class="form-control" required
+                                    <select class="form-control " id="district_id" class="form-control" required
                                             name="district_id" title="Select District" data-size="7">
                                         <option disabled> Select District</option>
 
@@ -54,9 +53,9 @@
                                         Case No
                                         *
                                     </label> <br>
-                                    <select class="form-control selectpicker" id="case_main_id"  class="form-control" required
+                                    <select class="form-control "  onchange="loadCases(this.value)"  id="case_main_id"  class="form-control" required
                                             name="case_main_id" title="Select District" data-size="7">
-                                        <option disabled> Select District First</option>
+                                        <option disabled> Select Cases</option>
 
                                     </select>
                                 </div>
@@ -65,9 +64,9 @@
                                         Lawyers
                                         *
                                     </label> <br>
-                                    <select class="form-control selectpicker" id="lawyer_id"  class="form-control" required
+                                    <select class="form-control " id="lawyer_id"  class="form-control" required
                                             name="lawyer_id" title="Select District" data-size="7">
-                                        <option disabled> Select District First</option>
+                                        <option disabled> Select Cases First</option>
 
                                     </select>
                                 </div>
@@ -119,35 +118,41 @@
         var case_main_id = <?php echo $entry_to_respond->case_main_id; ?>;
         function loadCases(value) {
             // alert(value);
-            $("#case_main_id").html("");
             $("#lawyer_id").html("");
+
             $.ajax({
                 type: 'get',
-                url: '/api/district/show/' + value,
+                url: '/api/case_main/show/' + value,
                 data: '_token = <?php echo csrf_token() ?>',
                 success: function (data) {
-                    $.each(data.data[0].case_mains, function (key, value) {
+                    $.each(data.data, function (key, value) {
+                            var selectedData = (lawyer_id === value.lawyers.id);
+                            $('#lawyer_id').append($('<option>', {
+                                selected: selectedData,
+                                value: value.lawyers.id,
+                                text: value.lawyers.name
+                            }));
+                        })
+                }
+            })
+
+        }
+        $(document).ready(
+            $.ajax({
+                type: 'get',
+                url: '/api/case_main/index/',
+                data: '_token = <?php echo csrf_token() ?>',
+                success: function (data) {
+                    $.each(data.data, function (key, value) {
                         var selectedData = (case_main_id === value.id);
                         $('#case_main_id').append($('<option>', {
                             selected: selectedData,
                             value: value.id,
                             text: value.case_no+'/'+value.case_year
                         }));
-                    }),
-                        $.each(data.data[0].lawyers, function (key, value) {
-                            var selectedData = (lawyer_id === value.id);
-                            $('#lawyer_id').append($('<option>', {
-                                selected: selectedData,
-                                value: value.id,
-                                text: value.name
-                            }));
-                        })
-                    $(".selectpicker").selectpicker("refresh")
+                    })
                 }
-            })
-
-        }
-        $(document).ready(
+            }),
             $.ajax({
                 type:'get',
                 url:'/api/bill_type/index',
@@ -161,7 +166,6 @@
                             text: value.name
                         }));
                     })
-                    $(".selectpicker").selectpicker("refresh")
                 }
             }),
             $.ajax({
@@ -177,7 +181,6 @@
                             text: value.name
                         }));
                     })
-                    $(".selectpicker").selectpicker("refresh")
                 }
             }),
             $.ajax({

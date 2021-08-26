@@ -132,7 +132,6 @@ class BlendxController extends Controller
     }
 
     public static function store(Request $request, $route){
-
         if(!$request->isMethod('POST')){
             return response("Method not allowed! Please make a POST request!", 405, ['Access-Control-Allow-Methods' => 'POST']);
         }
@@ -144,6 +143,7 @@ class BlendxController extends Controller
             $x = $model->blender::store_validator($route);
 
         }
+
         $validated = $request->validate($x);
             if(isset($validated['password'])){
 
@@ -151,7 +151,7 @@ class BlendxController extends Controller
                 $validated['password'] = $hashPass;
             }
         $processed = $model->blender::after_validator($validated, $route, Auth::user());
-
+//        dd($processed);
         try{
             $entry = $model->path::create($processed['updated']);
             $model->blender::after_created($entry, $processed);

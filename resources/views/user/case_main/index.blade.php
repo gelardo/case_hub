@@ -20,21 +20,15 @@
                             <th>Case No.</th>
                             <th>Case Type</th>
                             <th>Category of Cases</th>
-                            <th>Subsequent Case No. / Reference Case No.</th>
-{{--                            <th>Program</th>--}}
-                            <th>Region</th>
                             <th>Name of Court</th>
-                            <th>Area</th>
-                            <th>Branch</th>
                             <th>District</th>
                             <th>Name of the Complainant</th>
-                            <th>Name of the Accused</th>
+                            <th>Name of the Opposition</th>
                             <th>Next Date</th>
                             <th>Date of Filing</th>
                             <th>Police Station</th>
                             <th>Status of the Case</th>
                             <th>Panel Lawyer Name</th>
-{{--                            <th>Issue No</th>--}}
                             <th>Upload File</th>
                             <th class="disabled-sorting text-right">Actions</th>
                         </tr>
@@ -45,12 +39,7 @@
                             <th>Case No.</th>
                             <th>Case Type</th>
                             <th>Category of Cases</th>
-                            <th>Subsequent Case No. / Reference Case No.</th>
-{{--                            <th>Program</th>--}}
-                            <th>Region</th>
                             <th>Name of Court</th>
-                            <th>Area</th>
-                            <th>Branch</th>
                             <th>District</th>
                             <th>Name of the Complainant</th>
                             <th>Name of the Accused</th>
@@ -59,53 +48,50 @@
                             <th>Police Station</th>
                             <th>Status of the Case</th>
                             <th>Panel Lawyer Name</th>
-{{--                            <th>Issue No</th>--}}
                             <th>Upload File</th>
                             <th class="disabled-sorting text-right">Actions</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                         @foreach($all as $r)
-                        <tr>
+                        @foreach($all as $r)
+                            <tr>
 
-                            <td>{{$r->id}}</td>
-                            <td>{{$r->case_no.'/'.$r->case_year.'-'.$r->area}}</td>
-                            <td>{{$r->case_types->name}}</td>
-                            <td>{{$r->case_categories->name}}</td>
-                            <td>{{$r->subsequent_case_no}}</td>
-                            <td>{{$r->regions->name}}</td>
-                            <td>{{$r->courts->name}}</td>
-                            <td>{{$r->area}}</td>
-                            <td>{{$r->branch}}</td>
-                            <td>{{$r->districts->name    }}</td>
-                            <td>{{$r->complainant_name}}</td>
-                            <td>{{$r->name_of_accused}}</td>
-                            <td>{{$r->next_date}}</td>
-                            <td>{{$r->date_of_filing}}</td>
-                            <td>{{$r->police_stations->name}}</td>
-                            <td>{{$r->case_statuses->name}}</td>
-                            <td>{{$r->lawyers->name}}</td>
-                            <td>{{($r->case_notes) ? 'yes' : 'no'}}</td>
-                            <td class="text-right">
-                                <a href="" class="btn btn-info btn-link "data-toggle="modal" data-target="#exampleModal{{$r->id}}">
-                                    Change Lawyer
-                                </a>
-                                <a href="{{url('user/case_main/show/'.$r->id)}}" class="btn btn-info btn-link ">
-                                    View Case
-                                </a>
-                                <a href="{{url('user/case_main/edit',$r->id)}}" class="btn btn-warning btn-link btn-icon btn-sm "><i class="fa fa-edit"></i></a>
-                                <form action="{{url('user/case_main/delete/'.$r->id)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="user.showSwal('delete')" class="btn btn-danger btn-link btn-icon btn-sm">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                                <td>{{$r->id}}</td>
+                                <td>{{$r->case_no.'/'.$r->case_year.'-'.$r->area}}<br>
+                                    {{($r->subsequent_case_no)?'Subsequent Case No. / Reference Case No: '.$r->subsequent_case_no : ''}}
+                                </td>
+                                <td>{{$r->case_types->name}}</td>
+                                <td>{{($r->case_categories) ? $r->case_categories->name : 'No Input'}}</td>
+                                <td>{{$r->courts->name}}</td>
+                                <td>{{($r->districts) ? $r->districts->name : 'No Input'    }}</td>
+                                <td>{{$r->complainant_name}}</td>
+                                <td>{{$r->name_of_accused}}</td>
+                                <td>{{$r->next_date}}</td>
+                                <td>{{$r->date_of_filing}}</td>
+                                <td>{{($r->police_stations) ? $r->police_stations->name : 'No Input'}}</td>
+                                <td>{{$r->case_statuses->name}}</td>
+                                <td>{{$r->lawyers->name}}</td>
+                                <td>{{($r->case_notes) ? 'yes' : 'no'}}</td>
+                                <td class="text-right">
+                                    <a href="" class="btn btn-info btn-link "data-toggle="modal" data-target="#exampleModal{{$r->id}}">
+                                        Change Lawyer
+                                    </a>
+                                    <a href="{{url('user/case_main/show/'.$r->id)}}" class="btn btn-info btn-link ">
+                                        View Case
+                                    </a>
+                                    <a href="{{url('user/case_main/edit',$r->id)}}" class="btn btn-warning btn-link btn-icon btn-sm "><i class="fa fa-edit"></i></a>
+                                    <form action="{{url('user/case_main/delete/'.$r->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="user.showSwal('delete')" class="btn btn-danger btn-link btn-icon btn-sm">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
 
 
-                         @endforeach
+                        @endforeach
 
                         </tbody>
                     </table>
@@ -113,40 +99,40 @@
             </div><!--  end card  -->
         </div> <!-- end col-md-12 -->
     </div>
-@foreach($all as $r)
-    <div class="modal fade" id="exampleModal{{$r->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h5 class="modal-title" id="exampleModalLabel">Change Lawyer</h5>
-                </div>
-                <form action="{{route('assignLawyerToCases')}}" method="post">
-                <div class="modal-body">
-                @csrf
-                        <div class="form-group has-label">
-                            <label>
-                                Panel Lawyer
-                                *
-                            </label><br>
-                            <select class="form-control " id="lawyer_id{{$r->id}}" class="form-control"
-                                    required name="lawyer_id" title="Select Lawyer" data-size="7">
-                                <option disabled> Select Lawyer</option>
-                            </select>
-                        </div>
-                        <input type="hidden" name="case_id" value="{{$r->id}}">
+    @foreach($all as $r)
+        <div class="modal fade" id="exampleModal{{$r->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="exampleModalLabel">Change Lawyer</h5>
+                    </div>
+                    <form action="{{route('assignLawyerToCases')}}" method="post">
+                        <div class="modal-body">
+                            @csrf
+                            <div class="form-group has-label">
+                                <label>
+                                    Panel Lawyer
+                                    *
+                                </label><br>
+                                <select class="form-control " id="lawyer_id{{$r->id}}" class="form-control"
+                                        required name="lawyer_id" title="Select Lawyer" data-size="7">
+                                    <option disabled> Select Lawyer</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="case_id" value="{{$r->id}}">
 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-                </form>
             </div>
         </div>
-    </div>
         <script>
             var lawyer_id = <?php echo $r->lawyer_id ?>;
             $(document).ready(
@@ -169,5 +155,5 @@
             );
         </script>
 
-@endforeach
+    @endforeach
 @endsection

@@ -20,21 +20,15 @@
                             <th>Case No.</th>
                             <th>Case Type</th>
                             <th>Category of Cases</th>
-                            <th>Subsequent Case No. / Reference Case No.</th>
-{{--                            <th>Program</th>--}}
-                            <th>Region</th>
                             <th>Name of Court</th>
-                            <th>Area</th>
-                            <th>Branch</th>
                             <th>District</th>
                             <th>Name of the Complainant</th>
-                            <th>Name of the Accused</th>
+                            <th>Name of the Opposition</th>
                             <th>Next Date</th>
                             <th>Date of Filing</th>
                             <th>Police Station</th>
                             <th>Status of the Case</th>
                             <th>Panel Lawyer Name</th>
-{{--                            <th>Issue No</th>--}}
                             <th>Upload File</th>
                             <th class="disabled-sorting text-right">Actions</th>
                         </tr>
@@ -45,12 +39,7 @@
                             <th>Case No.</th>
                             <th>Case Type</th>
                             <th>Category of Cases</th>
-                            <th>Subsequent Case No. / Reference Case No.</th>
-{{--                            <th>Program</th>--}}
-                            <th>Region</th>
                             <th>Name of Court</th>
-                            <th>Area</th>
-                            <th>Branch</th>
                             <th>District</th>
                             <th>Name of the Complainant</th>
                             <th>Name of the Accused</th>
@@ -59,7 +48,6 @@
                             <th>Police Station</th>
                             <th>Status of the Case</th>
                             <th>Panel Lawyer Name</th>
-{{--                            <th>Issue No</th>--}}
                             <th>Upload File</th>
                             <th class="disabled-sorting text-right">Actions</th>
                         </tr>
@@ -69,25 +57,26 @@
                         <tr>
 
                             <td>{{$r->id}}</td>
-                            <td>{{$r->case_no.'/'.$r->case_year.'-'.$r->area}}</td>
+                            <td>{{$r->case_no.'/'.$r->case_year.'-'.$r->area}}<br>
+                            {{($r->subsequent_case_no)?'Subsequent Case No. / Reference Case No: '.$r->subsequent_case_no : ''}}
+                            </td>
                             <td>{{$r->case_types->name}}</td>
-                            <td>{{$r->case_categories->name}}</td>
-                            <td>{{$r->subsequent_case_no}}</td>
-                            <td>{{$r->regions->name}}</td>
+                            <td>{{($r->case_categories) ? $r->case_categories->name : 'No Input'}}</td>
                             <td>{{$r->courts->name}}</td>
-                            <td>{{$r->area}}</td>
-                            <td>{{$r->branch}}</td>
-                            <td>{{$r->districts->name    }}</td>
+                            <td>{{($r->districts) ? $r->districts->name : 'No Input'    }}</td>
                             <td>{{$r->complainant_name}}</td>
                             <td>{{$r->name_of_accused}}</td>
                             <td>{{$r->next_date}}</td>
                             <td>{{$r->date_of_filing}}</td>
-                            <td>{{$r->police_stations->name}}</td>
+                            <td>{{($r->police_stations) ? $r->police_stations->name : 'No Input'}}</td>
                             <td>{{$r->case_statuses->name}}</td>
                             <td>{{$r->lawyers->name}}</td>
                             <td>{{($r->case_notes) ? 'yes' : 'no'}}</td>
                             <td class="text-right">
                                 <a href="{{url('admin/case_main/edit',$r->id)}}" class="btn btn-warning btn-link btn-icon btn-sm "><i class="fa fa-edit"></i></a>
+                                <a href="{{url('admin/case_main/show/'.$r->id)}}" class="btn btn-info btn-link ">
+                                    View Case
+                                </a>
                                 <form action="{{url('admin/case_main/delete/'.$r->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')

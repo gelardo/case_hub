@@ -9,7 +9,7 @@
                 <div class="card ">
                     @include('admin.layouts.message')
                     <div class="card-header ">
-                        <h4 class="card-title">Add New Billing</h4>
+                        <h4 class="card-title">Add New Case Issue</h4>
                     </div>
                     <div class="card-body ">
                         <div class="row col-md-12">
@@ -83,7 +83,7 @@
                     $.each(data.data,function(key,value){
                         $('#case_main_id').append($('<option>', {
                             value: value.id,
-                            text: value.case_no+'/'+value.case_year+'/'+value.districts.name
+                            text: value.case_no+'/'+value.case_year
                         }));
                     })
                 }

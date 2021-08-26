@@ -62,6 +62,13 @@
 <script src="{{asset("assets/js/plugins/bootstrap-datetimepicker.js")}}"></script>
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
 <script src="{{asset("assets/js/plugins/jquery.dataTables.min.js")}}"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+
+
 <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
 <script src="{{asset("assets/js/plugins/bootstrap-tagsinput.js")}}"></script>
 <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
@@ -93,22 +100,39 @@
         });
     });
     $(document).ready(function () {
-        $('#datatable').DataTable({
+        var table =  $('#datatable').DataTable({
+            dom: "Blfrtip",
             stateSave: true,
             "pagingType": "full_numbers",
             "lengthMenu": [
                 [10, 25, 50, -1],
                 [10, 25, 50, "All"]
             ],
-            "order": [[ 0, "desc" ]],
             responsive: true,
             language: {
                 search: "_INPUT_",
                 searchPlaceholder: "Search records",
-            }
+            },
+            buttons: [
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        @stack('admin-dashboard-push')
+                    },
+                    customize: function ( win ) {
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    }
+                }
+            ]
 
         });
-
+        table.buttons().container()
+            .appendTo( '#example_wrapper .col-md-6:eq(0)' );
     });
     lawyer = {
         showSwal: function(type) {

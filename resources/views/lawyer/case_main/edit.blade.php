@@ -28,7 +28,7 @@
                                         Case Type
                                         *
                                     </label><br>
-                                    <select class="form-control selectpicker" id="case_type_id" class="form-control"
+                                    <select class="form-control " id="case_type_id" class="form-control"
                                             required name="case_type_id" title="Select Case Type" data-size="7">
                                         <option disabled> Select Case Type</option>
 
@@ -37,28 +37,29 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Case Category
-                                        *
+
                                     </label> <br>
-                                    <select class="selectpicker form-control" id="case_category_id" required
+                                    <select class=" form-control" id="case_category_id"
                                             name="case_category_id" title="Select Case Category" data-size="7">
-                                        <option disabled> Select Case Category</option>
+                                        <option value="0"> Select Case Category</option>
 
                                     </select>
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Case Nature
-                                        *
+
                                     </label> <br>
-                                    <select class="selectpicker form-control" id="case_nature_id" required
+                                    <select class=" form-control" id="case_nature_id"
                                             name="case_nature_id" title="Select Case Nature" data-size="7">
-                                        <option disabled> Select Case Nature</option>
+                                        <option value="0"> Select Case Nature</option>
 
                                     </select>
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Case Number
+                                        *
                                     </label>
                                     <input class="form-control" name="case_no"
                                            value="{{$entry_to_respond->case_no}}" type="text"
@@ -71,7 +72,7 @@
                                     </label>
 
                                     <select id="year" class=" form-control" name="case_year">
-                                        <option value="{{$entry_to_respond->case_year}}" readonly="" disabled
+                                        <option value="{{$entry_to_respond->case_year}}"
                                                 selected>{{$entry_to_respond->case_year}}</option>
 
                                     </select>
@@ -79,27 +80,27 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Subsequent Case No
-                                        *
+
                                     </label>
                                     <input class="form-control" name="subsequent_case_no"
                                            value="{{$entry_to_respond->subsequent_case_no }}"
-                                           type="text" required="true"/>
+                                           type="text" />
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Region
-                                        *
+
                                     </label> <br>
-                                    <select class="selectpicker form-control" id="region_id" required name="region_id"
+                                    <select class=" form-control" id="region_id"  name="region_id"
                                             title="Select Region" data-size="7">
-                                        <option disabled> Select Region</option>
+                                        <option value="0"> Select Region</option>
 
                                     </select>
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Area
-                                        *
+
                                     </label>
                                     <input class="form-control" name="area"
                                            value="{{$entry_to_respond->area}}" type="text"/>
@@ -107,7 +108,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Branch
-                                        *
+
                                     </label>
                                     <input class="form-control " name="branch"
                                            value="{{$entry_to_respond->branch}}" type="text"/>
@@ -115,12 +116,12 @@
                                 <div class="form-group has-label">
                                     <label>
                                         District
-                                        *
+
                                     </label> <br>
-                                    <select class="form-control selectpicker" id="district_id"
-                                            onchange="loadPoliceStations(this.value)" class="form-control" required
+                                    <select class="form-control " id="district_id"
+                                            onchange="loadPoliceStations(this.value)" class="form-control"
                                             name="district_id" title="Select District" data-size="7">
-                                        <option disabled> Select District</option>
+                                        <option value="0"> Select District</option>
 
                                     </select>
                                 </div>
@@ -129,26 +130,26 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Police Station
-                                        *
+
                                     </label> <br>
-                                    <select class="form-control selectpicker" id="police_station_id"
-                                            class="form-control" required name="police_station_id"
+                                    <select class="form-control " id="police_station_id"
+                                            class="form-control"  name="police_station_id"
                                             title="Select Police Station" data-size="7">
-                                        <option disabled> Select District First</option>
+                                        <option value="0"> Select District First</option>
 
                                     </select>
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Date of Incident
-                                        *
+
                                     </label>
                                     <input class="form-control datepicker" name="date_of_incident" value="{{$entry_to_respond->date_of_incident}}" type="date"/>
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Who identified
-                                        *
+
                                     </label>
                                     <input class="form-control"
                                            value="{{$entry_to_respond->whoidentified}}"
@@ -159,7 +160,7 @@
                                         Court
                                         *
                                     </label><br>
-                                    <select class="form-control selectpicker" id="court_id" class="form-control"
+                                    <select class="form-control " id="court_id" class="form-control"
                                             required name="court_id" title="Select Court" data-size="7">
                                         <option disabled> Select Court</option>
 
@@ -170,14 +171,14 @@
                                         Date of Filing
                                         *
                                     </label>
-                                    <input class="form-control datepicker" name="date_of_filing"
+                                    <input class="form-control datepicker" required name="date_of_filing"
                                            value="{{$entry_to_respond->date_of_filing}}"
                                            type="date"/>
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Laws Section
-                                        *
+
                                     </label>
                                     <input class="form-control" name="laws_section"
                                            value="{{$entry_to_respond->laws_section}}"
@@ -186,7 +187,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Allegation
-                                        *
+
                                     </label>
                                     <input class="form-control" name="allegation"
                                            value="{{$entry_to_respond->allegation}}" type="text"/>
@@ -196,7 +197,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Amount of Money
-                                        *
+
                                     </label>
                                     <input class="form-control" name="amount_of_money"
                                            value="{{$entry_to_respond->amount_of_money}}"
@@ -205,7 +206,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Complainant Name
-                                        *
+
                                     </label>
                                     <input class="form-control" name="complainant_name"
                                            value="{{$entry_to_respond->complainant_name}}"
@@ -214,7 +215,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Complainant Designation
-                                        *
+
                                     </label>
                                     <input class="form-control" name="complainant_designation"
                                            value="{{$entry_to_respond->complainant_designation}}"
@@ -225,7 +226,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Complainant Contact
-                                        *
+
                                     </label>
                                     <input class="form-control" name="complainant_contact"
                                            value="{{$entry_to_respond->complainant_contact}}"
@@ -234,7 +235,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Complainant Email
-                                        *
+
                                     </label>
                                     <input class="form-control" name="complainant_email"
                                            value="{{$entry_to_respond->complainant_email}}"
@@ -243,7 +244,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Complainant to Attend Next hearing
-                                        *
+
                                     </label><br>
                                     <div class="form-check-inline">
                                         <div class="form-check-radio">
@@ -269,7 +270,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Subsequent Name of Complainant
-                                        *
+
                                     </label>
                                     <input class="form-control" name="subsequent_name_of_complainant"
                                            value="{{$entry_to_respond->subsequent_name_of_complainant}}" type="text"/>
@@ -277,34 +278,34 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Pin Number
-                                        *
+
                                     </label>
                                     <input class="form-control" name="brac_pin"
                                            value="{{$entry_to_respond->brac_pin}}" type="text"
-                                           required="true"/>
+                                    />
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
-                                        Name of Accused
-                                        *
+                                        Name of Opposition Party
+
                                     </label>
                                     <input class="form-control" name="name_of_accused"
                                            value="{{$entry_to_respond->name_of_accused}}" type="text"
-                                           required="true"/>
+                                    />
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
-                                        Phone of Accused
-                                        *
+                                        Phone of Opposition Party
+
                                     </label>
                                     <input class="form-control" name="phone_of_accused"
                                            value="{{$entry_to_respond->phone_of_accused}}" type="text"
-                                           required="true"/>
+                                    />
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
-                                        Address of Accused
-                                        *
+                                        Address of Opposition Party
+
                                     </label>
                                     <textarea class="form-control" name="address_of_accused">
                                                       {{$entry_to_respond->address_of_accused}}
@@ -313,14 +314,14 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Disbursement Date
-                                        *
+
                                     </label>
                                     <input class="form-control datepicker" name="disbursement_date" value="{{$entry_to_respond->disbursement_date}}" type="date"/>
                                 </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Last Cash Receipt Date
-                                        *
+
                                     </label>
                                     <input class="form-control datepicker"
                                            value="{{$entry_to_respond->last_cash_receipt_date}}"
@@ -333,7 +334,7 @@
                                         Case Status
                                         *
                                     </label><br>
-                                    <select class="form-control selectpicker" id="case_status_id" class="form-control"
+                                    <select class="form-control " id="case_status_id" class="form-control"
                                             required name="case_status_id" title="Select Case Status" data-size="7">
                                         <option disabled> Select Case Status</option>
                                     </select>
@@ -343,7 +344,7 @@
                                         Court Order
                                         *
                                     </label><br>
-                                    <select class="form-control selectpicker" id="court_order_id"
+                                    <select class="form-control " id="court_order_id"
                                             onchange="loadAdditionalCourtOrders(this.value)" class="form-control"
                                             required name="court_order_id" title="Select Court Order" data-size="7">
                                         <option disabled> Select Court Order</option>
@@ -354,7 +355,7 @@
                                         Additional Court Order
                                         *
                                     </label> <br>
-                                    <select class="form-control selectpicker" id="additional_court_order_id"
+                                    <select class="form-control " id="additional_court_order_id"
                                             class="form-control" required name="additional_court_order_id"
                                             title="Select Additional Court Order" data-size="7">
                                         <option disabled> Select Court Order First</option>
@@ -373,7 +374,7 @@
                                         Next Date Fixed for
                                         *
                                     </label><br>
-                                    <select class="form-control selectpicker" id="next_date_status_id"
+                                    <select class="form-control " id="next_date_status_id"
                                             class="form-control" required name="next_date_status"
                                             title="Select Next Date Fixed FOr" data-size="7">
                                         <option disabled> Select Next Date fixed for</option>
@@ -384,7 +385,7 @@
                                         Panel Lawyer
                                         *
                                     </label><br>
-                                    <select class="form-control selectpicker" id="lawyer_id" class="form-control"
+                                    <select class="form-control " id="lawyer_id" class="form-control"
                                             required name="lawyer_id" title="Select Lawyer" data-size="7">
                                         <option disabled> Select Lawyer</option>
                                     </select>
@@ -415,37 +416,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group has-label">
-                                    <label>
-                                        Witnesses
-                                    </label> <br>
-                                    <input type="hidden" id="mainWitData" name="witness">
-                                    <div id="witness">
-                                    </div>
-                                    <div id="witness-data" style="display: none">
-                                        <div class="newDataWitness">
-                                            <p>Witness <span id="witness-number-cout">1</span></p>
-                                            <input type="text" name="witness_name" placeholder="Enter Witness Name"
-                                                   class="form-control">
-                                            <input type="text" name="witness_contact"
-                                                   placeholder="Enter Witness Contact" class="form-control">
-                                            <input type="text" name="witness_address"
-                                                   placeholder="Enter Witness Address" class="form-control">
 
-                                            <a href="javascript:void(0)" class="btn btn-danger btn-small removeWitness"
-                                               onclick="removeWitnessform(this)">Remove</a>
-                                        </div>
-                                    </div>
-
-                                    <a href="javascript:void(0)" class="btn btn-primary btn-small"
-                                       onclick="showWitnessForm(event)">Add Witness</a>
-
-
-                                </div>
                                 <div class="form-group has-label">
                                     <label>
                                         Case Notes
-                                        *
+
                                     </label>
                                     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                     <span class="btn btn-rose btn-round btn-file">
@@ -460,7 +435,7 @@
                                 <div class="form-group has-label">
                                     <label>
                                         Date of disposed
-                                        *
+
                                     </label>
                                     <input class="form-control"
                                            value="{{$entry_to_respond->date_of_disposed}}"

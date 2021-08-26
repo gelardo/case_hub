@@ -60,6 +60,20 @@
 <script src="{{asset("assets/js/plugins/bootstrap-datetimepicker.js")}}"></script>
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
 <script src="{{asset("assets/js/plugins/jquery.dataTables.min.js")}}"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+
+
+
+{{--https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js--}}
+{{--https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js--}}
+{{--https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js--}}
+{{--https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js--}}
+{{--https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js--}}
+{{--https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js--}}
 <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
 <script src="{{asset("assets/js/plugins/bootstrap-tagsinput.js")}}"></script>
 <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
@@ -91,7 +105,8 @@
         });
     });
     $(document).ready(function () {
-        $('#datatable').DataTable({
+        var table =  $('#datatable').DataTable({
+            dom: "Blfrtip",
             stateSave: true,
             "pagingType": "full_numbers",
             "lengthMenu": [
@@ -102,13 +117,30 @@
             language: {
                 search: "_INPUT_",
                 searchPlaceholder: "Search records",
-            }
+            },
+            buttons: [
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        @stack('admin-dashboard-push')
+                    },
+                    customize: function ( win ) {
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    }
+                }
+            ]
 
         });
-
+        table.buttons().container()
+            .appendTo( '#example_wrapper .col-md-6:eq(0)' );
     });
 </script>
-@stack('case-main-push')
+
 @stack('dcmc-push')
 @stack('case-nature-push')
 @stack('case-proceeding-push')

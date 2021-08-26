@@ -15,18 +15,18 @@ class CreateCaseMainsTable extends Migration
     {
         Schema::create('case_mains', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('case_category_id')->constrained('case_categories')->cascadeOnDelete();
-            $table->foreignId('case_nature_id')->constrained('case_natures')->cascadeOnDelete();
-            $table->foreignId('case_type_id')->constrained('case_types')->cascadeOnDelete();
+            $table->foreignId('case_category_id')->nullable()->constrained('case_categories')->cascadeOnDelete();
+            $table->foreignId('case_nature_id')->nullable()->constrained('case_natures')->cascadeOnDelete();
+            $table->foreignId('case_type_id')->nullable()->constrained('case_types')->cascadeOnDelete();
             $table->string('case_no')->nullable();
             $table->string('case_year')->nullable();
             $table->string('subsequent_case_no')->nullable();
-            $table->foreignId('program_id')->constrained('programs')->cascadeOnDelete();
-            $table->foreignId('region_id')->constrained('regions')->cascadeOnDelete();
+            $table->foreignId('program_id')->nullable()->constrained('programs')->cascadeOnDelete();
+            $table->foreignId('region_id')->nullable()->constrained('regions')->cascadeOnDelete();
             $table->string('area')->nullable();
             $table->string('branch')->nullable();
-            $table->foreignId('district_id')->constrained('districts')->cascadeOnDelete();
-            $table->foreignId('police_station_id')->constrained('police_stations')->cascadeOnDelete();
+            $table->foreignId('district_id')->nullable()->constrained('districts')->cascadeOnDelete();
+            $table->foreignId('police_station_id')->nullable()->constrained('police_stations')->cascadeOnDelete();
             $table->string('date_of_incident')->nullable();
             $table->string('whoidentified')->nullable();
             $table->foreignId('court_id')->constrained('courts')->cascadeOnDelete();
